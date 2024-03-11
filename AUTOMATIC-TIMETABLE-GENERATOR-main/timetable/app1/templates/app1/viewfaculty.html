@@ -1,0 +1,79 @@
+<!-- viewfaculty.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* CSS for the main content */
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .faculty-table {
+        width: 50%; /* Set table width */
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    .faculty-table th,
+    .faculty-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .faculty-table th {
+        background-color: #f2f2f2;
+    }
+
+    .faculty-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .faculty-table tr:hover {
+        background-color: #ddd;
+    }
+
+    .backLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<div class="main-content">
+    <a class="backLink" href="admin1.html">&#8592; Back</a>
+    <h2>All Faculties</h2>
+    <table class="faculty-table">
+        <thead>
+            <tr>
+                <th>Faculty ID</th>
+                <th>Faculty Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for faculty in faculties %}
+            <tr>
+                <td>{{ faculty.fid }}</td>
+                <td>{{ faculty.fname }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No faculties available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

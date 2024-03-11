@@ -1,0 +1,139 @@
+<!-- my_template.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* CSS styles for the main content */
+    body {
+        display: flex;
+        flex-direction: column; /* Adjust to column layout for better alignment */
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .main-content {
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .formField {
+        display: flex;
+        flex-direction: row; /* Display label and input fields in a row */
+        align-items: center; /* Center items vertically */
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+
+    .formField label {
+        display: block;
+        font-weight: bold;
+        margin-right: 10px; /* Add spacing between label and input */
+        font-size: 18px; /* Increase font size */
+    }
+
+    .formField input,
+    .formField select {
+        width: 50%;
+        padding: 10px;
+        font-size: 16px; /* Increase font size */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #buttonContainer {
+        display: flex;
+        justify-content: space-between; /* Place buttons side by side */
+        margin-top: 20px;
+    }
+
+    .dialogButton {
+        width: 48%; /* Adjust the width to fit within the container */
+        height: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        font-size: 18px; /* Increase font size */
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .backLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    p {
+        margin-top: 20px; /* Space between header and content */
+        font-size: 16px;
+        line-height: 2.6; /* Increased line height for better readability */
+    }
+</style>
+
+<!-- Form HTML -->
+<div class="main-content">
+    <a class="backLink" href="admin1.html">&#8592; Back</a>
+    <form id="facultyForm" action="#">
+        <div class="formField">
+            <label for="section">Section:</label>
+            <select id="section" name="section">
+                <!-- Add your empty dropdown options here -->
+                <option value="select" disabled selected>SELECT</option>
+                <option value="sec1">SEC-A</option>
+                <option value="sec2">SEC-B</option>
+                <option value="sec2">SEC-C</option>
+                <option value="sec4">SEC-D</option>
+                <option value="sec5">SEC-E</option>
+                <option value="sec6">SEC-F</option>
+                <option value="sec7">SEC-G</option>
+                <option value="sec8">SEC-H</option>
+            </select>
+        </div>
+        <div class="formField">
+            <label for="courseId">Course ID:</label>
+            <input type="text" id="courseId" name="courseId" placeholder="Enter Course ID">
+        </div>
+        <div class="formField">
+            <label for="facultyName">Faculty Name:</label>
+            <select id="facultyName" name="facultyName">
+                <option value=""></option>
+
+            </select>
+        </div>
+        <div id="buttonContainer">
+            <button class="dialogButton" type="button" onclick="add()">Add </button>
+            <button class="dialogButton" type="button" onclick="view()">View</button>
+            <!-- Add more buttons or modify as needed -->
+        </div>
+    </form>
+</div>
+
+<script>
+    function add() {
+        // Placeholder logic for adding a faculty
+        alert('added');
+    }
+
+    function view() {
+        // Placeholder logic for viewing
+        alert('viewed');
+    }
+
+    // Add more functions or modify as needed
+
+</script>
+{% endblock %}

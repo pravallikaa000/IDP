@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+{% block title %}
+    HOME PAGE
+{% endblock %}
+
+{% block content %}
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white; /* Set body background color to white */
+        }
+
+        .content-container {
+            margin: 20px;
+            position: relative; /* Add this line for positioning */
+        }
+
+        .i3 {
+            position: absolute;
+            top: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(0, 86, 144);
+            padding-top: 15px;
+            padding-left: 280px;
+            font-size: 43px;
+            text-align: center;
+        }
+
+        .i1 {
+            position: absolute;
+            top: 0;
+            left: 40px; /* Adjust left position */
+            padding-top: 180px;
+        }
+
+        .i2 {
+            position: absolute;
+            top: 0;
+            color: rgb(0, 86, 144);
+            font-size: 35px;
+            font-weight: 200;
+            font-family: 'Monopoly', cursive; /* Change the font-family to Monopoly */
+            left: 890px; /* Adjust left position */
+            padding-top: 190px;
+        }
+
+        .b {
+            position: absolute;
+            margin-left: 950px;
+            margin-top: 460px;
+            width: 300px;
+            height: 60px;
+            border-radius: 15px;
+            border-color: black;
+            background-color: rgba(153, 181, 243, 0.839);
+            font-size: 20px;
+        }
+
+        .b:hover {
+            background: rgba(158, 234, 182, 0.9);
+            color: black;
+            max-width: 100%; /* Increase the image size on hover */
+            transform: scale(1.05);
+        }
+
+        .a {
+            position: absolute;
+            margin-left: 900px;
+            margin-top: 320px;
+            font-family: 'Monopoly', cursive; 
+            font-size: 25px;
+            color: rgb(0, 86, 144);
+            margin-right: 100px;
+        }
+    </style>
+
+    <div class="content-container">
+        <h1 class="i3">AUTOMATIC TIMETABLE GENERATOR</h1>
+        <h1 class="i2">From Lectures to Lab Work, <br>Let our Timetable Lead the Way...</h1><br>
+        <h3 class="a">Easily input your courses, events, and classes, and let our generator do the rest. No more manual scheduling!</h3>
+        <a href="{% url 'home-page' %}"><button class="b" name="gen">Generate Timetable &#8594</button></a>
+       
+        <img class="i1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBDXkmJB0Ic2aYkoxgCrRFouvSDFirfNkr_pIPNWrcEXwG-R02xvb1SkcMgSsnCaeJB4&usqp=CAU" width="800" height="500" alt="Your Image Alt Text">
+        
+    </div>
+{% endblock %}

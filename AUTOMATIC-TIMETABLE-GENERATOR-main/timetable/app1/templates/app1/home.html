@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+    }
+
+    #images {
+        display: flex;
+        justify-content: 33%;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        cursor: pointer;
+    }
+
+    .role-name {
+        font-size: 30px;
+        text-align: center;
+        text-decoration: underline;
+    }
+</style>
+<div id="images">
+    <div style="text-align: center;">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRwHsoSpUuSFDXu7aMkSs4K9IccU5rcuhZ6Wv3YJMP2uBAFtbwE" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 1" onclick="redirectToFaculty()">
+        <div class="role-name">Faculty</div>
+    </div>
+
+    <div style="text-align: center;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtk5xpLylbMkOkAKQZcPTMzDVHxTHfLnTSUoVMXbRDYjLFIvH" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 2" onclick="redirectToAdmin()">
+        <div class="role-name">Admin</div>
+    </div>
+
+    <div style="text-align: center;">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQZD56yx9T1n0jTH4iDqmKR5TtVazQNN9sl9gtDGhCjSTEWQ8Vh" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 3" onclick="redirectToStudent()">
+        <div class="role-name">Student</div>
+    </div>
+</div>
+
+<script>
+    function redirectToFaculty() {
+        window.location.href = "fac.html";
+    }
+
+    function redirectToAdmin() {
+        window.location.href = "admin1.html";
+    }
+    
+    function redirectToStudent() {
+        window.location.href = "student.html";
+    }
+</script>
+
+{% endblock %}

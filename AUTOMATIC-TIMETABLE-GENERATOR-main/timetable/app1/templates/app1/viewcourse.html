@@ -1,0 +1,81 @@
+<!-- viewcourse.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* CSS for the main content */
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        position: relative; /* Add relative positioning */
+    }
+
+    .backLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .course-table {
+        width: 50%; /* Set table width */
+        margin-top: 20px;
+        border-collapse: collapse;
+        background-color: #fff; /* Set background color to white */
+    }
+
+    .course-table th,
+    .course-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .course-table th {
+        background-color: #f2f2f2;
+    }
+
+    .course-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .course-table tr:hover {
+        background-color: #ddd;
+    }
+
+</style>
+
+<div class="main-content">
+    <a class="backLink" href="admin1.html">&#8592; Back</a>
+    <h2>All Courses</h2>
+    <table class="course-table">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.cid }}</td>
+                <td>{{ course.cname }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No courses available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

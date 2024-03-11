@@ -1,0 +1,77 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+   
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .welcome-text {
+        font-size: 65px; /* Big font size */
+        font-weight: bold;
+        color: #4682B4; /* Black color */
+        margin-bottom: 50px;
+    }
+
+    .box-container {
+        display: flex;
+        flex-wrap: wrap; /* Allow boxes to wrap to the next line */
+        justify-content: space-around; /* Adjust alignment as needed */
+        max-width: 800px; /* Adjust as needed */
+        width: 100%;
+    }
+
+    .box {
+        width: 38%; /* Adjust the width of each box */
+        height: 100px;
+        padding: 20px;
+        border: 6px solid black;
+        margin: 10px;
+        text-align: center;
+        background-color: #d4d4d4; /* Light grey background */
+    }
+
+    .box h2 {
+        font-size: 24px; /* Adjust font size as needed */
+    }
+</style>
+<div class="main-content">
+    <div class="welcome-text">WELCOME ADMIN!!</div>
+    <div class="box-container">
+        <div class="box" onclick="redirectToCourses()">
+            <h2>Courses</h2>
+        </div>
+        <div class="box" onclick="redirectToFaculty()">
+            <h2>Faculty</h2>
+        </div>
+        <div class="box" onclick="redirectToSection()">
+            <h2>Sections</h2>
+        </div>
+        <div class="box" onclick="redirectToGentimetable()">
+            <h2>Generate timetable</h2>
+        </div>
+    </div>
+</div>
+
+<script>
+    function redirectToCourses() {
+        window.location.href = "course.html";
+    }
+
+    function redirectToFaculty() {
+        window.location.href = "faculty.html";
+    }
+    function redirectToSection() {
+        window.location.href = "section.html";
+    }
+    function redirectToGentimetable() {
+        window.location.href = "gentimetable.html";
+    }
+</script>
+{% endblock %}

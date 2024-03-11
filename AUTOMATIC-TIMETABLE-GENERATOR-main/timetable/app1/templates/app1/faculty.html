@@ -1,0 +1,124 @@
+
+<!-- faculty.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* CSS styles for the main content */
+    body {
+        display: flex;
+        flex-direction: column; /* Adjust to column layout for better alignment */
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .main-content {
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .formField {
+        display: flex;
+        flex-direction: row; /* Display label and input fields in a row */
+        align-items: center; /* Center items vertically */
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+
+    .formField label {
+        display: block;
+        font-weight: bold;
+        margin-right: 10px; /* Add spacing between label and input */
+        font-size: 18px; /* Increase font size */
+    }
+
+    .formField input {
+        width: 50%;
+        padding: 10px;
+        font-size: 16px; /* Increase font size */
+        border: 1px solid {% if form.field.errors %} red {% else %} #ccc {% endif %};
+        border-radius: 5px;
+        {% if form.field.errors %} border-color: red; {% endif %} /* Additional style for errors */
+    }
+
+    .error-message {
+        color: red; /* Style for error messages */
+        margin-top: 5px;
+    }
+
+    #buttonContainer {
+        display: flex;
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .dialogButton {
+        width: 40%; /* Adjust the width to fit within the container */
+        height: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        font-size: 18px; /* Increase font size */
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .backLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 16px;
+        line-height: 2.6; 
+    }
+</style>
+
+<!-- Form HTML -->
+<div class="main-content">
+    <a class="backLink" href="admin1.html">&#8592; Back</a>
+    <h2>Faculty Page</h2>
+    <form id="facultyForm"  method="post" action="">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="formField">
+                {{ field.label_tag }}
+                {{ field }}
+                <div class="error-message">
+                    {{ field.errors }}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div id="buttonContainer">
+            <button class="dialogButton" type="submit" name="addfaculty">Add Faculty</button>
+            <button class="dialogButton" type="submit" name="viewfaculty" id="viewFacultyBtn">View Faculties</button>
+            <button class="dialogButton" type="submit" name="updatefaculty">Update Faculties</button>
+            <button class="dialogButton" type="submit" name="deletefaculty">Delete Faculties</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.getElementById("viewFacultyBtn").addEventListener("click", function() {
+        window.location.href = "viewfaculty.html";
+    });
+</script>
+
+{% endblock %}

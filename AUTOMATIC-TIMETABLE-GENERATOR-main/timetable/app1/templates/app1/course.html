@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* CSS styles for the main content */
+    body {
+        display: flex;
+        flex-direction: column; /* Adjust to column layout for better alignment */
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .main-content {
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .formField {
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+
+    .formField label {
+        display: block;
+        font-weight: bold;
+        margin-right: 10px; 
+        font-size: 18px; 
+    }
+
+    .formField input {
+        width: 50%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid {% if form.course_id.errors %} red {% else %} #ccc {% endif %};
+        border-radius: 5px;
+    }
+
+    .error-message {
+        color: red; /* Style for error messages */
+        margin-top: 5px;
+        {% if not form.course_id.errors %} display: none; {% endif %}
+    }
+
+    #buttonContainer {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .dialogButton {
+        width: 40%; 
+        height: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        font-size: 18px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .backLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 16px;
+        line-height: 2.6; 
+    }
+</style>
+
+<div class="main-content">
+    
+    <h2>Course Page</h2>
+    <form id="courseForm" method="post" action="">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="formField {% if field.name == 'course_id' and form.course_id.errors %} errors {% endif %}">
+                {{ field.label_tag }}
+                {{ field }}
+                <div class="error-message">
+                    {{ field.errors }}
+                </div>
+            </div>
+        {% endfor %}
+        <div id="buttonContainer">
+            <button class="dialogButton" type="submit" name="addcourse">Add Course</button>
+            <button class="dialogButton" type="button" name="viewcourse" id="viewCourseBtn">View Courses</button>
+            <button class="dialogButton" type="submit" name="updatecourse">Update Courses</button>
+            <button class="dialogButton" type="submit" name="deletecourse">Delete Courses</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.getElementById("viewCourseBtn").addEventListener("click", function() {
+        window.location.href = "viewcourse.html";
+    });
+</script>
+
+{% endblock %}
